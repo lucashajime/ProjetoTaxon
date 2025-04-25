@@ -1,5 +1,8 @@
 export default class Organism {
-    private scientificName!: string;
+    constructor(
+        private scientificName: string
+    ) {}
+
 
     public getScientificName(): string {
         return this.scientificName;

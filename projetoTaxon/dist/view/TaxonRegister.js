@@ -13,10 +13,20 @@ class TaxonRegister {
         const taxon = this.controller.getNewTaxon();
         const name = this.prompt("\nNome do táxon (ex: Felis catus):");
         const rank = this.prompt("Categoria (ex: Espécie):");
+        const isFossil = this.prompt("É um fóssil? (S/N): ").toUpperCase() === 'S';
         taxon.setName(name);
         taxon.getRank().setRank(rank);
+        if (isFossil) {
+            const period = this.prompt("Período geológico (ex: Cretáceo): ");
+            taxon.setAsFossil(rank, period);
+        }
+        else {
+            taxon.getRank().setRank(rank);
+        }
+        /* this.controller.db.addNewTaxon(taxon);
+        console.log(`Táxon ${name} (${rank}) cadastrado!`); */
         this.controller.db.addNewTaxon(taxon);
-        console.log(`Táxon ${name} (${rank}) cadastrado!`);
+        console.log(`✅ Táxon ${name} (${rank}) ${isFossil ? '[Fóssil]' : ''} cadastrado.`);
     }
 }
 exports.default = TaxonRegister;

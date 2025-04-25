@@ -1,44 +1,58 @@
 import PromptSync from 'prompt-sync';
 import TaxonomyController from '../controller/TaxonomyController';
 import TaxonRegister from './TaxonRegister';
+import OrganismRegister from './OrganismRegister';
+import ClassificationRegister from './ClassificationRegister';
 
 export default class MainScreen {
     private prompt = PromptSync();
     private controller: TaxonomyController;
     private taxonRegister: TaxonRegister;
+    private organismRegister: OrganismRegister;
+    private classificationRegister: ClassificationRegister;
 
     constructor(controller: TaxonomyController) {
         this.controller = controller;
         this.taxonRegister = new TaxonRegister(controller);
+        this.organismRegister = new OrganismRegister(controller);
+        this.classificationRegister = new ClassificationRegister(controller);
         this.mainMenu();
     }
 
     public mainMenu(): void {
         let running = true;
         while (running) {
+            /* console.clear(); */
+
             console.log("\n=== Sistema de Classificação Taxonômica ===");
 
-            const choice = parseInt(this.prompt(
-                "Menu Taxonômico:\n" +
-                "1. Cadastrar Táxon\n" +
-                "2. Cadastrar Organismo\n" +
-                "3. Classificar Organismo\n" +
-                "4. Listar Classificações\n" +
-                "5. Sair"
-            ));
+            console.log("1. Cadastrar Táxon");
+            console.log("2. Cadastrar Organismo");
+            console.log("3. Classificar Organismo");
+            console.log("4. Listar Classificações");
+            console.log("5. Sair");
+
+            const choiceInput = this.prompt("\nOpção: ");
+            const choice = parseInt(choiceInput);
 
             switch (choice) {
                 case 1:
                     this.taxonRegister.addTaxon();
                     break;
                 case 2:
-                    // Implementar cadastro de organismo
+                    this.organismRegister.addOrganism();
                     break;
                 case 3:
-                    // Implementar classificação
+                    this.classificationRegister.classifyOrganism();
                     break;
                 case 4:
-                    console.log(this.controller.db.listAllClassifications());
+                    /* console.log("\n=== DEBUG: Estado do Banco ===");
+                    console.log("Organismos:", this.controller.db['organisms'].length);
+                    console.log("Táxons:", this.controller.db['taxonDB'].length);
+                    console.log("Classificações:", this.controller.db['classifications'].length); */
+
+                    console.log("\n=== Classificações Registradas ===")
+                    console.log(this.controller.listClassifications());
                     break;
                 case 5:
                     running = false;

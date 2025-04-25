@@ -2,13 +2,10 @@ import Taxon from "./Taxon";
 import Organism from "./Organism";
 
 export default class Classification {
-    private taxon!: Taxon;
-    private organism!: Organism;
-
-    public classify(taxon: Taxon, organism: Organism) {
-        this.taxon = taxon;
-        this.organism = organism;
-    }
+    constructor(
+        private taxon: Taxon,
+        private organism: Organism
+    ) {}
 
     public getTaxon(): Taxon {
         return this.taxon;

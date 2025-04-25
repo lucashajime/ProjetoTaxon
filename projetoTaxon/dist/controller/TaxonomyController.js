@@ -8,11 +8,14 @@ const Taxon_1 = __importDefault(require("../model/Taxon"));
 const MainScreen_1 = __importDefault(require("../view/MainScreen"));
 class TaxonomyController {
     constructor() {
-        this.db = new DataBase_1.default();
+        this.db = DataBase_1.default.getInstance();
         new MainScreen_1.default(this);
     }
     getNewTaxon() {
         return new Taxon_1.default();
+    }
+    listClassifications() {
+        return this.db.listAllClassifications();
     }
 }
 exports.default = TaxonomyController;

@@ -3,7 +3,7 @@ import Taxon from "../model/Taxon";
 import MainScreen from "../view/MainScreen";
 
 export default class TaxonomyController {
-    public db: DataBase = new DataBase();
+    public db: DataBase = DataBase.getInstance();
 
     constructor() {
         new MainScreen(this);
@@ -11,5 +11,9 @@ export default class TaxonomyController {
 
     public getNewTaxon(): Taxon {
         return new Taxon();
+    }
+
+    public listClassifications(): string {
+        return this.db.listAllClassifications();
     }
 }
