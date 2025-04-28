@@ -25,6 +25,9 @@ class Taxon {
         this.fossilRank = new FossilRank_1.default(rank, period);
         this.fossilRank.validateRank(rank);
     }
+    isFossil() {
+        return !!this.fossilRank;
+    }
     getRank() {
         return this.fossilRank || this.rank;
     }

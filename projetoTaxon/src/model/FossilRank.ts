@@ -9,11 +9,13 @@ export default class FossilRank extends ClassificationRank {
         this.geologicalPeriod = period;
     }
 
+
+    /*Sobrescrita*/
     public override validateRank(rank: string): void {
         super.validateRank(rank);
 
         if (!["Espécie", "Gênero", "Família"].includes(rank)) {
-            throw new Error("Categoria de fóssil inválida. Use Família, Gênero ou Espécie.");
+            throw new Error(`A categoria "${rank}" de fóssil é inválida. Use Família, Gênero ou Espécie.`);
         }
     }
 

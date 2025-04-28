@@ -11,6 +11,7 @@ export default class ClassificationRank {
         return this.rank;
     }
 
+    /* Sobrecarga */
     public validateRank(rank: string): void;
     public validateRank(rank: string, level: number): void;
     public validateRank(rank: string, level?: number): void {

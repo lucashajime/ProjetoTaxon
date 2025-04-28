@@ -39,10 +39,6 @@ class MainScreen {
                     this.classificationRegister.classifyOrganism();
                     break;
                 case 4:
-                    /* console.log("\n=== DEBUG: Estado do Banco ===");
-                    console.log("Organismos:", this.controller.db['organisms'].length);
-                    console.log("Táxons:", this.controller.db['taxonDB'].length);
-                    console.log("Classificações:", this.controller.db['classifications'].length); */
                     console.log("\n=== Classificações Registradas ===");
                     console.log(this.controller.listClassifications());
                     break;

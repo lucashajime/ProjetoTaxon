@@ -28,6 +28,10 @@ export default class Taxon {
         this.fossilRank.validateRank(rank);
     }
 
+    public isFossil(): boolean {
+        return !!this.fossilRank;
+    }
+
     public getRank(): ClassificationRank {
         return this.fossilRank || this.rank;
     }

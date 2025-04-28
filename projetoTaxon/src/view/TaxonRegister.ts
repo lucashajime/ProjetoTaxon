@@ -12,7 +12,7 @@ export default class TaxonRegister {
 
     public addTaxon() {
         const taxon = this.controller.getNewTaxon();
-        const name = this.prompt("\nNome do táxon (ex: Felis catus):");
+        const name = this.prompt("\nNome do táxon (ex: Homminidae):");
         const rank = this.prompt("Categoria (ex: Espécie):");
         const isFossil = this.prompt("É um fóssil? (S/N): ").toUpperCase() === 'S';
 
@@ -26,11 +26,8 @@ export default class TaxonRegister {
             taxon.getRank().setRank(rank);
         }
 
-        /* this.controller.db.addNewTaxon(taxon);
-        console.log(`Táxon ${name} (${rank}) cadastrado!`); */
-
         this.controller.db.addNewTaxon(taxon);
-        console.log(`✅ Táxon ${name} (${rank}) ${isFossil ? '[Fóssil]' : ''} cadastrado.`);
+        console.log(`Táxon ${name} (${rank}) ${isFossil ? '[Fóssil]' : ''} cadastrado.`);
     }
 }
 

@@ -45,11 +45,12 @@ class DataBase {
         return this.classifications.map((classification, index) => {
             const org = classification.getOrganism();
             const taxon = classification.getTaxon();
+            const fossilTag = taxon.isFossil() ? " [fóssil]" : "";
             if (!org || !taxon) {
                 console.error(`Classificação ${index} inválida!`);
                 return `${index + 1}. [CLASSIFICAÇÃO INVÁLIDA]`;
             }
-            return `${index + 1}. ${org.getScientificName()} → ${taxon.getName()}`;
+            return `${index + 1}. ${org.getScientificName()}${fossilTag} → ${taxon.getName()}`;
         }).join("\n");
     }
 }
