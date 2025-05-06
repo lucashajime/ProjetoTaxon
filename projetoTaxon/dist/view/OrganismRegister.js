@@ -16,6 +16,7 @@ class OrganismRegister {
         const organism = new Organism_1.default(scientificName);
         this.controller.db.addOrganism(organism);
         console.log(`Organismo "${scientificName}" cadastrado!`);
+        return organism;
     }
 }
 exports.default = OrganismRegister;

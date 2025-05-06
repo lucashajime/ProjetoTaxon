@@ -10,7 +10,7 @@ export default class OrganismRegister {
         this.controller = controller;
     }
 
-    public addOrganism(): void {
+    public addOrganism(): Organism {
         console.log("\n=== Cadastro de Organismo ===");
         const scientificName = this.prompt("Nome científico: ");
 
@@ -18,5 +18,6 @@ export default class OrganismRegister {
         this.controller.db.addOrganism(organism);
 
         console.log(`Organismo "${scientificName}" cadastrado!`);
+        return organism;
     }
 }

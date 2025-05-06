@@ -28,6 +28,7 @@ export default class TaxonRegister {
 
         this.controller.db.addNewTaxon(taxon);
         console.log(`Táxon ${name} (${rank}) ${isFossil ? '[Fóssil]' : ''} cadastrado.`);
+        return taxon;
     }
 }
 

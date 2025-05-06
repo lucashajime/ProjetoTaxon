@@ -10,21 +10,16 @@ class ClassificationRegister {
         this.prompt = (0, prompt_sync_1.default)();
         this.controller = controller;
     }
-    classifyOrganism() {
-        console.log("\n=== Classificar Organismo ===");
-        console.log("Organismos disponíveis: ", this.controller.db.listOrganisms());
-        console.log("Táxons disponíveis: ", this.controller.db.listTaxa());
-        const organismId = parseInt(this.prompt("ID do organismo: "));
-        const taxonId = parseInt(this.prompt("ID do táxon: "));
-        const organism = this.controller.db.getOrganismById(organismId);
-        const taxon = this.controller.db.getTaxonById(taxonId);
-        if (organism && taxon) {
+    classifyOrganism(organism, taxon) {
+        try {
             const classification = new Classification_1.default(taxon, organism);
             this.controller.db.addClassification(classification);
-            console.log("Classificação registrada.");
+            console.log("✅ Classificação registrada: " +
+                `${organism.getScientificName()} → ${taxon.getName()}` +
+                `${taxon.isFossil() ? ' [fóssil]' : ''}`);
         }
-        else {
-            console.log("IDs inválidos.");
+        catch (error) {
+            console.log("Erro na classificação: ");
         }
     }
 }

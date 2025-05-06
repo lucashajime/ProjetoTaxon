@@ -11,7 +11,7 @@ export default class FossilRank extends ClassificationRank {
 
 
     /*Sobrescrita*/
-    public override validateRank(rank: string): void {
+    public validateRank(rank: string): void {
         super.validateRank(rank);
 
         if (!["Espécie", "Gênero", "Família"].includes(rank)) {

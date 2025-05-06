@@ -10,6 +10,7 @@ class FossilRank extends ClassificationRank_1.default {
         this.setRank(rank);
         this.geologicalPeriod = period;
     }
+    /*Sobrescrita*/
     validateRank(rank) {
         super.validateRank(rank);
         if (!["Espécie", "Gênero", "Família"].includes(rank)) {

@@ -25,36 +25,33 @@ export default class MainScreen {
             /* console.clear(); */
 
             console.log("\n=== Sistema de Classificação Taxonômica ===");
-
-            console.log("1. Cadastrar Táxon");
-            console.log("2. Cadastrar Organismo");
-            console.log("3. Classificar Organismo");
-            console.log("4. Listar Classificações");
-            console.log("5. Sair");
+            console.log("1. Cadastrar Organismo");
+            console.log("2. Listar Classificações");
+            console.log("3. Sair");
 
             const choiceInput = this.prompt("\nOpção: ");
             const choice = parseInt(choiceInput);
 
             switch (choice) {
                 case 1:
-                    this.taxonRegister.addTaxon();
+                    this.registerCompleteOrganism();
                     break;
                 case 2:
-                    this.organismRegister.addOrganism();
-                    break;
-                case 3:
-                    this.classificationRegister.classifyOrganism();
-                    break;
-                case 4:
                     console.log("\n=== Classificações Registradas ===")
                     console.log(this.controller.listClassifications());
                     break;
-                case 5:
+                case 3:
                     running = false;
                     break;
                 default:
                     console.log("Opção inválida!");
             }
         }
+    }
+
+    private registerCompleteOrganism(): void {
+        const organism = this.organismRegister.addOrganism();
+        const taxon = this.taxonRegister.addTaxon();
+        this.classificationRegister.classifyOrganism(organism, taxon);
     }
 }

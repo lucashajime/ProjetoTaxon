@@ -1,6 +1,8 @@
 import PromptSync from "prompt-sync";
 import TaxonomyController from "../controller/TaxonomyController";
 import Classification from "../model/Classification";
+import Organism from "../model/Organism";
+import Taxon from "../model/Taxon";
 
 export default class ClassificationRegister {
     private prompt = PromptSync();
@@ -10,24 +12,17 @@ export default class ClassificationRegister {
         this.controller = controller;
     }
 
-    public classifyOrganism(): void {
-        console.log("\n=== Classificar Organismo ===");
-
-        console.log("Organismos disponíveis: ", this.controller.db.listOrganisms());
-        console.log("Táxons disponíveis: ", this.controller.db.listTaxa());
-
-        const organismId = parseInt(this.prompt("ID do organismo: "));
-        const taxonId = parseInt(this.prompt("ID do táxon: "));
-
-        const organism = this.controller.db.getOrganismById(organismId);
-        const taxon = this.controller.db.getTaxonById(taxonId);
-
-        if (organism && taxon) {
+    public classifyOrganism(organism: Organism, taxon: Taxon): void {
+        try {
             const classification = new Classification(taxon, organism);
             this.controller.db.addClassification(classification);
-            console.log("Classificação registrada.");
-        } else {
-            console.log("IDs inválidos.");
+
+            console.log("✅ Classificação registrada: " + 
+                `${organism.getScientificName()} → ${taxon.getName()}` +
+                `${taxon.isFossil() ? ' [fóssil]' : ''}`
+            );
+        } catch (error) {
+            console.log("Erro na classificação: ");
         }
     }
 }
