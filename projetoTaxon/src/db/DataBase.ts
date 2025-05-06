@@ -1,6 +1,7 @@
 import Taxon from "../model/Taxon";
 import Classification from "../model/Classification";
 import Organism from "../model/Organism";
+import ClassificationRank from "../model/ClassificationRank";
 
 export default class DataBase {
     private static instance: DataBase;
