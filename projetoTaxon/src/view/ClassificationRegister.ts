@@ -6,10 +6,8 @@ import Taxon from "../model/Taxon";
 
 export default class ClassificationRegister {
     private prompt = PromptSync();
-    private controller: TaxonomyController;
 
-    constructor(controller: TaxonomyController) {
-        this.controller = controller;
+    constructor(private controller: TaxonomyController) {
     }
 
     public classifyOrganism(organism: Organism, taxon: Taxon): void {

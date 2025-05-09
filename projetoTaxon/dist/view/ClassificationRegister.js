@@ -7,8 +7,8 @@ const prompt_sync_1 = __importDefault(require("prompt-sync"));
 const Classification_1 = __importDefault(require("../model/Classification"));
 class ClassificationRegister {
     constructor(controller) {
-        this.prompt = (0, prompt_sync_1.default)();
         this.controller = controller;
+        this.prompt = (0, prompt_sync_1.default)();
     }
     classifyOrganism(organism, taxon) {
         try {

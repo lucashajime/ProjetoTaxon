@@ -4,16 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const prompt_sync_1 = __importDefault(require("prompt-sync"));
-const TaxonRegister_1 = __importDefault(require("./TaxonRegister"));
-const OrganismRegister_1 = __importDefault(require("./OrganismRegister"));
-const ClassificationRegister_1 = __importDefault(require("./ClassificationRegister"));
 class MainScreen {
-    constructor(controller) {
-        this.prompt = (0, prompt_sync_1.default)();
+    constructor(controller, organismRegister, taxonRegister, classificationRegister) {
         this.controller = controller;
-        this.taxonRegister = new TaxonRegister_1.default(controller);
-        this.organismRegister = new OrganismRegister_1.default(controller);
-        this.classificationRegister = new ClassificationRegister_1.default(controller);
+        this.organismRegister = organismRegister;
+        this.taxonRegister = taxonRegister;
+        this.classificationRegister = classificationRegister;
+        this.prompt = (0, prompt_sync_1.default)();
         this.mainMenu();
     }
     mainMenu() {

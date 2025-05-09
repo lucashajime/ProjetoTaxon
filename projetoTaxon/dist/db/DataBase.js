@@ -50,7 +50,9 @@ class DataBase {
                 console.error(`Classificação ${index} inválida!`);
                 return `${index + 1}. [CLASSIFICAÇÃO INVÁLIDA]`;
             }
-            return `${index + 1}. ${org.getScientificName()}${fossilTag} → ${taxon.getName()}`;
+            return `${index + 1}. ${org.getScientificName()} ` +
+                `→ ${taxon.getName()} (${taxon.getRank().getRank()})` +
+                `${taxon.isFossil() ? ' [fóssil]' : ''}`;
         }).join("\n");
     }
 }

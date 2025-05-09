@@ -6,16 +6,12 @@ import ClassificationRegister from './ClassificationRegister';
 
 export default class MainScreen {
     private prompt = PromptSync();
-    private controller: TaxonomyController;
-    private taxonRegister: TaxonRegister;
-    private organismRegister: OrganismRegister;
-    private classificationRegister: ClassificationRegister;
 
-    constructor(controller: TaxonomyController) {
-        this.controller = controller;
-        this.taxonRegister = new TaxonRegister(controller);
-        this.organismRegister = new OrganismRegister(controller);
-        this.classificationRegister = new ClassificationRegister(controller);
+    constructor(private controller: TaxonomyController, 
+        private organismRegister: OrganismRegister,
+        private taxonRegister: TaxonRegister,
+        private classificationRegister: ClassificationRegister
+    ) {  
         this.mainMenu();
     }
 

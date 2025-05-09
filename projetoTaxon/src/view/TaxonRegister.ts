@@ -4,11 +4,8 @@ import Taxon from "../model/Taxon";
 
 export default class TaxonRegister {
     private prompt = PromptSync();
-    private controller: TaxonomyController;
 
-    constructor(controller: TaxonomyController) {
-        this.controller = controller;
-    }
+    constructor(private controller: TaxonomyController) {}
 
     public addTaxon() {
         const taxon = this.controller.getNewTaxon();

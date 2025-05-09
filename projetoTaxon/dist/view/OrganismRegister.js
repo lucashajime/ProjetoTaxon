@@ -7,8 +7,8 @@ const prompt_sync_1 = __importDefault(require("prompt-sync"));
 const Organism_1 = __importDefault(require("../model/Organism"));
 class OrganismRegister {
     constructor(controller) {
-        this.prompt = (0, prompt_sync_1.default)();
         this.controller = controller;
+        this.prompt = (0, prompt_sync_1.default)();
     }
     addOrganism() {
         console.log("\n=== Cadastro de Organismo ===");

@@ -4,11 +4,8 @@ import Organism from "../model/Organism";
 
 export default class OrganismRegister {
     private prompt = PromptSync();
-    private controller: TaxonomyController;
 
-    constructor(controller: TaxonomyController) {
-        this.controller = controller;
-    }
+    constructor(private controller: TaxonomyController) {}
 
     public addOrganism(): Organism {
         console.log("\n=== Cadastro de Organismo ===");
