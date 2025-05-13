@@ -22,4 +22,13 @@ export default class Classification {
     public setOrganism(organism: Organism): void {
         this.organism = organism;
     }
+
+    public toString(): string {
+        const org = this.organism;
+        const taxon = this.taxon;
+        const fossilTag = taxon.isFossil() ? " [fóssil]" : "";
+        const typeTag = org.getType() ? ` (${org.getType()})` : '';
+        
+        return `${org.getScientificName()}${typeTag} → ${taxon.getName()} (${taxon.getRank().getRank()})${fossilTag}`;
+    }
 }

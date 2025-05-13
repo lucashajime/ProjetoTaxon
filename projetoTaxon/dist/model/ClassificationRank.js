@@ -1,7 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const TaxonomicRank_1 = require("./TaxonomicRank");
 class ClassificationRank {
     setRank(name, level) {
+        this.validateRank(name);
         this.rank = name;
         if (level)
             this.level = level;
@@ -10,7 +12,7 @@ class ClassificationRank {
         return this.rank;
     }
     validateRank(rank, level) {
-        if (!["Domínio", "Reino", "Filo", "Classe", "Ordem", "Família", "Gênero", "Espécie"].includes(rank)) {
+        if (!Object.values(TaxonomicRank_1.TaxonomicRank).includes(rank)) {
             throw new Error("Categoria taxonômica inválida!");
         }
         if (level && (level < 1 || level > 8)) {

@@ -1,6 +1,9 @@
+import { OrganismType } from "./TaxonomicRank";
+
 export default class Organism {
     constructor(
-        private scientificName: string
+        private scientificName: string,
+        private type?: OrganismType
     ) {}
 
 
@@ -10,5 +13,13 @@ export default class Organism {
 
     public setScientificName(name: string): void {
         this.scientificName = name;
+    }
+
+     public getType(): OrganismType | undefined {
+        return this.type;
+    }
+
+    public setType(type: OrganismType): void {
+        this.type = type;
     }
 }

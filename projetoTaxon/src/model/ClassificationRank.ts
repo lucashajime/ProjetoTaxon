@@ -1,21 +1,24 @@
+import { TaxonomicRank } from "./TaxonomicRank";
+
 export default class ClassificationRank {
-    private rank!: string;
+    private rank!: TaxonomicRank;
     private level!: number;
 
-    public setRank(name: string, level?: number): void {
+    public setRank(name: TaxonomicRank, level?: number): void {
+        this.validateRank(name);
         this.rank = name;
         if (level) this.level = level;
     }
 
-    public getRank(): string {
+    public getRank(): TaxonomicRank {
         return this.rank;
     }
 
     /* Sobrecarga */
-    public validateRank(rank: string): void;
-    public validateRank(rank: string, level: number): void;
-    public validateRank(rank: string, level?: number): void {
-        if (!["Domínio", "Reino", "Filo", "Classe", "Ordem", "Família", "Gênero", "Espécie"].includes(rank)) {
+    public validateRank(rank: TaxonomicRank): void;
+    public validateRank(rank: TaxonomicRank, level: number): void;
+    public validateRank(rank: TaxonomicRank, level?: number): void {
+        if (!Object.values(TaxonomicRank).includes(rank)) {
             throw new Error("Categoria taxonômica inválida!");
         }
         if (level && (level < 1 || level > 8)) {

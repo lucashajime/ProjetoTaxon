@@ -63,18 +63,12 @@ export default class DataBase {
         }
 
         return this.classifications.map((classification, index) => {
-            const org = classification.getOrganism()
-            const taxon = classification.getTaxon()
-            const fossilTag = taxon.isFossil() ? " [fóssil]" : ""; 
-            
-            if (!org || !taxon) {
-                console.error(`Classificação ${index} inválida!`);
-                return `${index + 1}. [CLASSIFICAÇÃO INVÁLIDA]`;
-            }
-                
-            return `${index + 1}. ${org.getScientificName()} ` + 
-                    `→ ${taxon.getName()} (${taxon.getRank().getRank()})` + 
-                    `${taxon.isFossil() ? ' [fóssil]' : ''}`;
+        try {
+            return `${index + 1}. ${classification.toString()}`;
+        } catch (error) {
+            console.error(`Erro ao exibir classificação ${index}:`, error);
+            return `${index + 1}. [CLASSIFICAÇÃO INVÁLIDA]`;
+        }
         }).join("\n");
     }
 }
