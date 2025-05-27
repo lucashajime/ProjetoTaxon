@@ -1,15 +1,19 @@
 import Taxon from "../model/Taxon";
 import Classification from "../model/Classification";
 import Organism from "../model/Organism";
-import ClassificationRank from "../model/ClassificationRank";
+import { IDataRepository } from "../interface/IDataRepository";
 
-export default class DataBase {
+export default class DataBase implements IDataRepository {
     private static instance: DataBase;
     private taxonDB: Taxon[] = [];
     private organisms: Organism[] = [];
     private classifications: Classification[] = [];
 
     private constructor() {}
+
+    saveTaxon(taxon: Taxon): void {
+        this.addNewTaxon(taxon);
+    }
 
     public static getInstance(): DataBase {
         if(!DataBase.instance) {

@@ -33,7 +33,7 @@ class OrganismRegister {
             return new Organism_1.default(scientificName);
         }
         const organism = new Organism_1.default(scientificName, type);
-        this.controller.db.addOrganism(organism);
+        this.controller.addOrganism(organism);
         console.log(`Organismo "${scientificName}" (${type}) cadastrado!`);
         return organism;
     }

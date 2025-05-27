@@ -5,10 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const ClassificationRank_1 = __importDefault(require("./ClassificationRank"));
 const FossilRank_1 = __importDefault(require("./FossilRank"));
+const TaxonBase_1 = require("./TaxonBase");
 const TaxonomicRank_1 = require("./TaxonomicRank");
-class Taxon {
-    constructor() {
-        this.rank = new ClassificationRank_1.default();
+class Taxon extends TaxonBase_1.TaxonBase {
+    constructor(name = "Novo Táxon", rank = TaxonomicRank_1.TaxonomicRank.SPECIES) {
+        super(name, new ClassificationRank_1.default());
+        this.rank.setRank(rank);
     }
     getName() {
         return this.name;
@@ -44,6 +46,10 @@ class Taxon {
     }
     getRank() {
         return this.fossilRank || this.rank;
+    }
+    getDetails() {
+        return `${this.name} (${this.getRank().getRank()})` +
+            `${this.isFossil() ? ' [Fóssil]' : ''}`;
     }
 }
 exports.default = Taxon;

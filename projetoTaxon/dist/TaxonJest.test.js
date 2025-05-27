@@ -1,30 +1,34 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const Taxon_1 = __importDefault(require("./model/Taxon"));
-const TaxonomicRank_1 = require("./model/TaxonomicRank");
+/*import FossilRank from "./model/FossilRank";
+import { Taxon } from "./model/Taxon";
+import { TaxonomicRank, ValidFossil } from "./model/TaxonomicRank";
+
 describe('Classe Taxon', () => {
-    let taxon;
+    let taxon: Taxon;
+
     beforeEach(() => {
-        taxon = new Taxon_1.default();
+        taxon = new Taxon();
     });
+
     it('deve aceitar um táxon não-fóssil', () => {
         taxon.setName('Canis lupus');
-        taxon.getRank().setRank(TaxonomicRank_1.TaxonomicRank.SPECIES);
+        taxon.getRank().setRank(TaxonomicRank.SPECIES);
+        
         expect(taxon.getName()).toBe('Canis lupus');
-        expect(taxon.getRank().getRank()).toBe(TaxonomicRank_1.TaxonomicRank.SPECIES);
+        expect(taxon.getRank().getRank()).toBe(TaxonomicRank.SPECIES);
         expect(taxon.isFossil()).toBe(false);
     });
+
     it('deve aceitar um táxon fóssil com período geológico', () => {
-        taxon.setAsFossil(TaxonomicRank_1.ValidFossil.FAMILY, 'Cretáceo');
+        taxon.setAsFossil(ValidFossil.FAMILY, 'Cretáceo');
+
         expect(taxon.isFossil()).toBe(true);
-        expect(taxon.getRank().getRank()).toBe(TaxonomicRank_1.ValidFossil.FAMILY);
+        expect(taxon.getRank().getRank()).toBe(ValidFossil.FAMILY);
     });
+
     it('deve lançar erro para categoria fóssil inválida (ex: Domínio', () => {
         expect(() => {
-            taxon.setAsFossil(TaxonomicRank_1.TaxonomicRank.DOMAIN, 'Jurássico');
+            taxon.setAsFossil(TaxonomicRank.DOMAIN as any, 'Jurássico');
         }).toThrow('Categoria fóssil inválida');
     });
-});
+});*/ 

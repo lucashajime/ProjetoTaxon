@@ -39,7 +39,7 @@ class TaxonRegister {
         }
         taxon.setName(name);
         taxon.getRank().setRank(rank);
-        this.controller.db.addNewTaxon(taxon);
+        this.controller.addTaxon(taxon);
         console.log(`Táxon ${name} (${rank}) ${isFossil ? '[Fóssil]' : ''} cadastrado.`);
         return taxon;
     }

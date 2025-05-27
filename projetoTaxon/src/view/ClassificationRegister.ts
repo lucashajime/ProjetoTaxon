@@ -13,7 +13,7 @@ export default class ClassificationRegister {
     public classifyOrganism(organism: Organism, taxon: Taxon): void {
         try {
             const classification = new Classification(taxon, organism);
-            this.controller.db.addClassification(classification);
+            this.controller.addClassification(classification);
 
             console.log("✅ Classificação registrada: " + 
                 `${organism.getScientificName()} → ${taxon.getName()}` +

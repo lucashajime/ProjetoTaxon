@@ -1,6 +1,5 @@
 import PromptSync from "prompt-sync";
 import TaxonomyController from "../controller/TaxonomyController";
-import Taxon from "../model/Taxon";
 import { TaxonomicRank, ValidFossil } from "../model/TaxonomicRank";
 
 export default class TaxonRegister {
@@ -43,7 +42,7 @@ export default class TaxonRegister {
         taxon.setName(name);
         taxon.getRank().setRank(rank);
 
-        this.controller.db.addNewTaxon(taxon);
+        this.controller.addTaxon(taxon);
         console.log(`Táxon ${name} (${rank}) ${isFossil ? '[Fóssil]' : ''} cadastrado.`);
         return taxon;
     }

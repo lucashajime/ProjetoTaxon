@@ -6,6 +6,9 @@ class DataBase {
         this.organisms = [];
         this.classifications = [];
     }
+    saveTaxon(taxon) {
+        this.addNewTaxon(taxon);
+    }
     static getInstance() {
         if (!DataBase.instance) {
             DataBase.instance = new DataBase();

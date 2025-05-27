@@ -1,6 +1,8 @@
+import { IClassifiable } from "../interface/IClassifiable";
+import Taxon from "./Taxon";
 import { OrganismType } from "./TaxonomicRank";
 
-export default class Organism {
+export default class Organism implements IClassifiable{
     constructor(
         private scientificName: string,
         private type?: OrganismType
@@ -21,5 +23,9 @@ export default class Organism {
 
     public setType(type: OrganismType): void {
         this.type = type;
+    }
+
+    public classify(taxon: Taxon): void {
+        console.log(`${this.scientificName} classificado como ${taxon.getName()}`);
     }
 }

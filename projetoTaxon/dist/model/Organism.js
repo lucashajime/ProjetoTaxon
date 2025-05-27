@@ -17,5 +17,8 @@ class Organism {
     setType(type) {
         this.type = type;
     }
+    classify(taxon) {
+        console.log(`${this.scientificName} classificado como ${taxon.getName()}`);
+    }
 }
 exports.default = Organism;

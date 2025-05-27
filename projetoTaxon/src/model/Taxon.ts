@@ -1,12 +1,16 @@
 import ClassificationRank from "./ClassificationRank";
 import FossilRank from "./FossilRank";
+import { TaxonBase } from "./TaxonBase";
 import { TaxonomicRank, ValidFossil } from "./TaxonomicRank";
 
-export default class Taxon {
-    private name!: string;
+export default class Taxon extends TaxonBase{
     private description!: string;
     private fossilRank?: FossilRank;
-    public rank: ClassificationRank = new ClassificationRank();
+
+    constructor(name: string = "Novo Táxon", rank: TaxonomicRank = TaxonomicRank.SPECIES) {
+        super(name, new ClassificationRank());
+        this.rank.setRank(rank);
+    }
 
     public getName(): string {
         return this.name;
@@ -51,5 +55,10 @@ export default class Taxon {
 
     public getRank(): ClassificationRank {
         return this.fossilRank || this.rank;
+    }
+
+    public getDetails(): string {
+        return `${this.name} (${this.getRank().getRank()})` + 
+               `${this.isFossil() ? ' [Fóssil]' : ''}`;
     }
 }
