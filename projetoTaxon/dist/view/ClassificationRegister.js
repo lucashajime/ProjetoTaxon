@@ -19,7 +19,7 @@ class ClassificationRegister {
                 `${taxon.isFossil() ? ' [fóssil]' : ''}`);
         }
         catch (error) {
-            console.log("Erro na classificação: ");
+            console.log(`Falha ao classificar ${organism.getScientificName()}:`, error instanceof Error ? error.message : String(error));
         }
     }
 }
